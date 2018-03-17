@@ -1,0 +1,57 @@
+using System;
+using static System.Console;
+using System.IO;
+
+namespace bioHacks
+{
+    class Gene //total get set access to the gene number, name, and sequence, 
+    {
+        public string geneName { get; set; }
+       //public string trait { get; set; }
+       // public string HPAclass { get; set; }
+        //public string HPAprog { get; set; }
+       // public string HPAnonSpec{ get; set; }
+    }
+    
+    static class Program
+    {
+        static Gene GetGene( string GWAS, string newGeneFile ) 
+        {
+            Gene gene = null; 
+    
+            //bool foundGene = false; //bool to compare when the gene is found
+            
+            using(FileStream genes  = new FileStream(GWAS, FileMode.Open, FileAccess.Read))
+            using(StreamReader GWASreader = new StreamReader(GWAS)) 
+            {
+                using(FileStream lines  = new FileStream(newGeneFile, FileMode.OpenOrCreate, FileAccess.Write))
+                using(StreamWriter writer = new StreamWriter(newGeneFile)) 
+                {
+                    while(!GWASreader.EndOfStream) 
+                    {
+                        string name = GWASreader.ReadLine(); 
+                        gene = new Gene();
+                        gene.geneName = name;
+                        WriteLine(name);
+                        writer.Write("hi");
+                    }
+                }
+            return gene;
+            }
+        }
+        
+        static void Main() //argument uses dotnet run number number passed in as a string ex. line number
+        {
+            const string GWAS = @"Chr20GWAStraits.tsv" ;  
+            const string newGeneFile = @"newGeneFile.csv" ; 
+            const string GWAS = @"Chr20GWAStraits.tsv" ;  
+            const string newGeneFile = @"newGeneFile.csv" ; 
+            
+            Gene gene = GetGene( GWAS, newGeneFile );
+            //if (gene != null)
+            //{
+            //WriteLine(gene.geneName);
+            //}
+        }
+    }
+}
