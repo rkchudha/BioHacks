@@ -1,2 +1,5 @@
 HI
 hello
+
+
+data = pd.read_csv("Chr20FuncIntx.tsv", sep="\t", delimiter='\t')
