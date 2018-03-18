@@ -1,0 +1,98 @@
+using System;
+using static System.Console;
+using System.IO;
+
+namespace bioHacks
+{
+    class Gene // creating object of class Gene
+    {
+        public string geneCode { get; set; }
+        public string geneNumber { get; set; }
+        public string HPAclass { get; set; }
+        public string HPAprog { get; set; }
+    }
+    
+    static class Program
+    {
+        static Gene GetGene( string GWAS, string newGeneFile, string GENEDATA ) 
+        {
+            Gene gene = null; 
+            
+            // create new file
+            using(FileStream newGeneData  = new FileStream(newGeneFile, FileMode.OpenOrCreate, FileAccess.Write)) 
+            // create new writer to write into new file
+            using(StreamWriter writer = new StreamWriter(newGeneFile))
+            {
+                // open GWAS to read
+                using(FileStream genesGWAS  = new FileStream(GWAS, FileMode.Open, FileAccess.Read)) 
+                // create reader to read file
+                using(StreamReader readerGWAS = new StreamReader(GWAS)) 
+                {
+                    // read through entire GWAS file line by line
+                    while(!readerGWAS.EndOfStream) 
+                    {
+                        // create new object (gene) of class Gene
+                        gene = new Gene(); 
+                        // create string of one line in GWAS
+                        string lineGWAS = readerGWAS.ReadLine(); 
+                        // split line using the tabe delimiter
+                        string[] words = lineGWAS.Split('\t'); 
+                        
+                        // first part is the gene code
+                        gene.geneCode = words[0]; 
+                        // second part is the gene number
+                        gene.geneNumber = words[1]; 
+                        
+                        // open GeneData file to read           
+                        using(FileStream genesGENEDATA  = new FileStream(GENEDATA, FileMode.Open, FileAccess.Read)) 
+                        // create reader to read file
+                        using(StreamReader readerGENEDATA = new StreamReader(GENEDATA)) 
+                        {
+                             // have not found a gene at this moment, therefore it is false
+                            bool foundGene = false;
+                            
+                            // read through entire GeneData file while we have not found a gene yet
+                            while( foundGene == false && !readerGENEDATA.EndOfStream ) 
+                            {   
+                                // create string of one line of GeneData
+                                string lineGENEDATA = readerGENEDATA.ReadLine(); 
+                                // create string array based on the tab delimiter
+                                string[] wordsGENEDATA = lineGENEDATA.Split('\t'); 
+                                // if the geneCode name is the same as geneCode from GeneData file and is not "sym"
+                                if(gene.geneCode == wordsGENEDATA[0] && wordsGENEDATA[0] != "sym") 
+                                {
+                                    // the HPAclass is the 15th field for each line
+                                    gene.HPAclass = wordsGENEDATA[15];
+                                    // the HPAprog is the 17th field for each line
+                                    gene.HPAprog = wordsGENEDATA[17];
+                                    // displays the genes and the data found from both files
+                                    writer.WriteLine("{0, -10} {1, -60} {2, -100} {3, -100} ", gene.geneCode, gene.geneNumber, gene.HPAclass, gene.HPAprog );
+                                    // boolean value is now true that we have found a gene
+                                    foundGene = true; 
+                                }
+                                // if the code above did not run, we have not found a gene
+                                else foundGene = false;
+                            }
+                        }
+                        // display geneCode and geneNumber from GWAS file
+                        writer.WriteLine("{0, -10} {1, -60}", gene.geneCode, gene.geneNumber);
+                    }
+                }
+            }
+        return gene;
+        }
+    
+        
+        static void Main() 
+        {
+            // these are the file paths
+            const string GWAS = @"Chr20GWAStraits.tsv" ;  
+            const string newGeneFile = @"newGeneFile.csv" ; 
+            const string GENEDATA = @"Chr20GeneData.tsv";
+            
+            // create gene based on the information taken from files
+            Gene gene = GetGene( GWAS, newGeneFile, GENEDATA);
+            
+        }
+    }
+}

@@ -1,15 +1,15 @@
 BodyPart,Unfavourable,Favourable
 Liver,121,1
-Cervical,5,12
+Cervical,5,13
 Breast,5,3
-Renal,111,53
-Lung,11,9
-Endometrial,59,14
-Thyroid,8,4
-Pancreatic,21,30
-Head and Neck,7,12
+Renal,110,55
+Lung,14,9
+Endometrial,57,14
+Thyroid,9,5
+Pancreatic,20,32
+Head,8,12
 Melanoma,1,5
-Urothelial,9,19
+Urothelial,8,19
 Prostate,5,0
 Ovarian,6,2
 Colorectal,5,0
