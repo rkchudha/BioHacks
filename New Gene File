@@ -66,18 +66,15 @@ namespace bioHacks
         }
     
         
-        static void Main() //argument uses dotnet run number number passed in as a string ex. line number
+        static void Main() 
         {
             const string GWAS = @"Chr20GWAStraits.tsv" ;  
             const string newGeneFile = @"newGeneFile.csv" ; 
             const string GENEDATA = @"Chr20GeneData.tsv";
             
- 
-
             Gene gene = GetGene( GWAS, newGeneFile, GENEDATA);
-            
-           
             
         }
     }
 }
+
