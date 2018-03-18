@@ -16,13 +16,12 @@ if __name__ == '__main__':
                 for j in range(len(prog_split)):
                     cancer = (prog_split[j].split())[0].split(":")[0]
                     fav = (prog_split[j].split())[-1]
-                    if cancer in cancers_all:
-                        if fav == "(favourable)":
-                            cancers_all[cancer][1] += 1
-                        else:
-                            cancers_all[cancer][0] += 1
-                    else:
+                    if cancer not in cancers_all:
                         cancers_all[cancer] = [0, 0]
+                    if fav == "(favourable)":
+                        cancers_all[cancer][1] += 1
+                    else:
+                        cancers_all[cancer][0] += 1
     file_write.write("BodyPart,Unfavourable,Favourable\n")
     for cancer in cancers_all:
         file_write.write(cancer + "," + str(cancers_all[cancer][0]) + "," + str(cancers_all[cancer][1]) + "\n")
