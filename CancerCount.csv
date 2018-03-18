@@ -1,18 +1,18 @@
-BodyPart,Unfavourable,Favourable
-Liver,121,1
+BodyPart	Unfavourable	Favourable
+Liver,120,1
 Cervical,5,12
-Breast,5,3
-Renal,111,53
-Lung,11,9
-Endometrial,59,14
-Thyroid,8,4
-Pancreatic,21,30
-Head and Neck,7,12
-Melanoma,1,5
-Urothelial,9,19
-Prostate,5,0
-Ovarian,6,2
-Colorectal,5,0
-Glioma,4,2
-Testis,2,1
-Stomach,1,2
+Breast,4,3
+Renal,110,54
+Lung,14,8
+Endometrial,56,14
+Thyroid,8,5
+Pancreatic,20,31
+Head,8,11
+Melanoma,1,4
+Urothelial,8,18
+Prostate,4,0
+Ovarian,5,2
+Colorectal,4,0
+Glioma,4,1
+Testis,1,1
+Stomach,0,2
