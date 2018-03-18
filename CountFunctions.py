@@ -3,7 +3,6 @@ if __name__ == '__main__':
     file_read = open("Chr20GWAStraits.tsv", "r")
     file_write = open("FunctionCount.csv", "w")
 
-    i = 0
     # dictionary string to int: [unfavourable_count, favourable_count]
     genes_all = {}
     for line in file_read:
