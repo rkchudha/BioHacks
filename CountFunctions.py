@@ -13,4 +13,5 @@ if __name__ == '__main__':
             genes_all[gene] = 1
     file_write.write("Gene,FunctionCount\n")
     for gene in genes_all:
-        file_write.write(gene + "," + str(genes_all[gene]) + "\n")
+        if genes_all[gene] > 10:
+            file_write.write(gene + "," + str(genes_all[gene]) + "\n")
