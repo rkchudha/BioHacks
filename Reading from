@@ -1,7 +1,0 @@
-HI
-hello
-
-
-import pandas pd
-
-data = pd.read_csv("Chr20FuncIntx.tsv", sep="\t", delimiter='\t')
