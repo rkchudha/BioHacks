@@ -11,6 +11,6 @@ if __name__ == '__main__':
             genes_all[gene] += 1
         else:
             genes_all[gene] = 1
-    file_write.write("Gene,Function Count\n")
+    file_write.write("Gene,FunctionCount\n")
     for gene in genes_all:
         file_write.write(gene + "," + str(genes_all[gene]) + "\n")
