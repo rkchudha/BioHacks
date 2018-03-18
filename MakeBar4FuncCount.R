@@ -1,3 +1,5 @@
+# Creates a bar graph that indicates genes with multiple functions
+
 tabl <- read.table("FunctionCount.csv",sep = ",", header = TRUE)
 
 

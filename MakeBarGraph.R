@@ -1,3 +1,6 @@
+# Creates a bar graph indicating the number of genes related to to a specific cancer and whether it's favourable
+
+
 nums <- read.table("CancerCount.csv",sep = ",", header = TRUE)
 
 
